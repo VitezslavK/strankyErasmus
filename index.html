@@ -1,4 +1,552 @@
-mahgcvhgkdVvgsd
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>ETICALIDAD | Solicitud de devolucion de recambios</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+	<style>
+		:root {
+			--bg: #ffffff;
+			--bg-soft: #f7f7f7;
+			--text: #1a1a1a;
+			--text-soft: #666666;
+			--muted: #999999;
+			--line: #e0e0e0;
+			--line-soft: #eeeeee;
+			--field-line: #cccccc;
+			--field-placeholder: #aaaaaa;
+			--accent: #e8632a;
+			--accent-hover: #cf5520;
+			--footer-bg: #f5f5f5;
+			--container: 1000px;
+			--form-width: 860px;
+		}
 
-hbqeuhwqvecuqwevuvrcuqerguie
-dsfsdfsdfjgvk
+		* {
+			box-sizing: border-box;
+		}
+
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+			background: var(--bg);
+			color: var(--text);
+			font-family: "Inter", sans-serif;
+			letter-spacing: 0.02em;
+		}
+
+		body {
+			min-height: 100vh;
+			line-height: 1.6;
+		}
+
+		.container {
+			width: min(calc(100% - 48px), var(--container));
+			margin: 0 auto;
+		}
+
+		.section {
+			padding: 96px 0;
+		}
+
+		.divider {
+			height: 1px;
+			background: var(--line);
+			width: 100%;
+		}
+
+		.site-header {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			background: var(--bg);
+			border-bottom: 1px solid var(--line-soft);
+			z-index: 10;
+		}
+
+		.header-inner {
+			min-height: 78px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.logo {
+			font-size: 18px;
+			font-weight: 700;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+		}
+
+		main {
+			padding-top: 78px;
+		}
+
+		.hero {
+			text-align: center;
+			padding-bottom: 80px;
+		}
+
+		.hero-title {
+			margin: 0;
+			font-size: clamp(34px, 5vw, 58px);
+			line-height: 1.12;
+			letter-spacing: 0.01em;
+		}
+
+		.hero-title .light {
+			font-weight: 300;
+		}
+
+		.hero-title .bold {
+			font-weight: 800;
+		}
+
+		.hero-divider {
+			width: min(100%, 620px);
+			margin: 28px auto 26px;
+			border: 0;
+			border-top: 1px solid var(--line);
+		}
+
+		.hero-desc {
+			max-width: 760px;
+			margin: 0 auto;
+			color: var(--text-soft);
+			font-size: 16px;
+			font-weight: 300;
+		}
+
+		.form-wrap {
+			width: min(100%, var(--form-width));
+			margin: 0 auto;
+			background: var(--bg);
+			border-radius: 4px;
+			box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+			padding: 52px;
+		}
+
+		.form-label {
+			margin: 0 0 36px;
+			color: var(--muted);
+			font-size: 11px;
+			letter-spacing: 0.2em;
+			font-weight: 500;
+			text-transform: uppercase;
+		}
+
+		form {
+			display: grid;
+			gap: 32px;
+		}
+
+		.grid-2 {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 30px;
+		}
+
+		.field {
+			display: block;
+			width: 100%;
+			border: 0;
+			border-bottom: 1px solid var(--field-line);
+			background: transparent;
+			border-radius: 0;
+			outline: none;
+			padding: 10px 0;
+			font: inherit;
+			font-size: 15px;
+			color: var(--text);
+			transition: border-color 0.2s ease;
+		}
+
+		.field::placeholder {
+			color: var(--field-placeholder);
+			font-weight: 300;
+		}
+
+		.field:focus {
+			border-bottom-color: var(--accent);
+		}
+
+		textarea.field {
+			min-height: 140px;
+			resize: vertical;
+		}
+
+		.select-wrap {
+			position: relative;
+		}
+
+		.select-wrap::after {
+			content: "▾";
+			position: absolute;
+			right: 2px;
+			top: 50%;
+			transform: translateY(-50%);
+			pointer-events: none;
+			color: var(--text-soft);
+			font-size: 14px;
+		}
+
+		select.field {
+			appearance: none;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			padding-right: 24px;
+			color: var(--text-soft);
+		}
+
+		.upload-zone {
+			border: 2px dashed var(--field-line);
+			padding: 28px 20px;
+			text-align: center;
+			cursor: pointer;
+		}
+
+		.upload-zone input {
+			display: none;
+		}
+
+		.upload-icon {
+			font-size: 22px;
+			line-height: 1;
+			margin-bottom: 8px;
+		}
+
+		.upload-text {
+			color: var(--text-soft);
+			font-size: 14px;
+			font-weight: 300;
+		}
+
+		.checks {
+			display: grid;
+			gap: 12px;
+		}
+
+		.check {
+			display: flex;
+			align-items: flex-start;
+			gap: 10px;
+			color: var(--text-soft);
+			font-size: 13px;
+			font-weight: 300;
+			line-height: 1.45;
+		}
+
+		.check input {
+			margin-top: 2px;
+			accent-color: var(--accent);
+			width: 14px;
+			height: 14px;
+			flex-shrink: 0;
+		}
+
+		.submit-btn {
+			border: 0;
+			border-radius: 3px;
+			background: var(--accent);
+			color: #ffffff;
+			width: 100%;
+			text-transform: uppercase;
+			letter-spacing: 0.12em;
+			font-size: 12px;
+			font-weight: 700;
+			padding: 17px 20px;
+			cursor: pointer;
+			transition: background-color 0.2s ease;
+		}
+
+		.submit-btn:hover,
+		.submit-btn:focus-visible {
+			background: var(--accent-hover);
+		}
+
+		.info {
+			padding-top: 86px;
+			padding-bottom: 96px;
+		}
+
+		.info-grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			border-top: 1px solid var(--line);
+			border-bottom: 1px solid var(--line);
+		}
+
+		.info-item {
+			text-align: center;
+			padding: 36px 20px;
+		}
+
+		.info-item + .info-item {
+			border-left: 1px solid var(--line);
+		}
+
+		.info-icon {
+			font-size: 24px;
+			margin-bottom: 8px;
+		}
+
+		.info-title {
+			margin: 0;
+			font-size: 13px;
+			color: var(--text-soft);
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+			font-weight: 500;
+		}
+
+		.info-value {
+			margin: 10px 0 0;
+			font-size: 30px;
+			line-height: 1.2;
+			font-weight: 800;
+			letter-spacing: 0.01em;
+		}
+
+		.site-footer {
+			background: var(--footer-bg);
+			border-top: 1px solid var(--line);
+			padding-top: 64px;
+		}
+
+		.footer-grid {
+			display: grid;
+			grid-template-columns: 1.2fr 1fr 1fr 1fr;
+			gap: 34px;
+			padding-bottom: 52px;
+		}
+
+		.footer-logo {
+			font-size: 15px;
+			font-weight: 800;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			margin-bottom: 12px;
+		}
+
+		.footer-text,
+		.footer-links a,
+		.footer-contact {
+			margin: 0;
+			color: var(--text-soft);
+			font-size: 14px;
+			font-weight: 300;
+			text-decoration: none;
+		}
+
+		.footer-heading {
+			margin: 0 0 14px;
+			font-size: 11px;
+			text-transform: uppercase;
+			letter-spacing: 0.18em;
+			color: var(--muted);
+			font-weight: 600;
+		}
+
+		.footer-links {
+			display: grid;
+			gap: 8px;
+		}
+
+		.footer-links a:hover,
+		.footer-links a:focus-visible {
+			color: var(--text);
+		}
+
+		.footer-bottom {
+			border-top: 1px solid var(--line);
+			padding: 18px 0 28px;
+			color: var(--text-soft);
+			font-size: 13px;
+			font-weight: 300;
+			text-align: center;
+		}
+
+		@media (max-width: 900px) {
+			.section {
+				padding: 80px 0;
+			}
+
+			.form-wrap {
+				padding: 38px 26px;
+			}
+
+			.grid-2 {
+				grid-template-columns: 1fr;
+				gap: 32px;
+			}
+
+			.info-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.info-item + .info-item {
+				border-left: 0;
+				border-top: 1px solid var(--line);
+			}
+
+			.footer-grid {
+				grid-template-columns: 1fr;
+				gap: 28px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<header class="site-header">
+		<div class="container header-inner">
+			<div class="logo">ETICALIDAD</div>
+		</div>
+	</header>
+
+	<main>
+		<section class="section hero">
+			<div class="container">
+				<h1 class="hero-title">
+					<span class="light">Solicitud de </span>
+					<span class="bold">devolucion</span>
+				</h1>
+				<hr class="hero-divider" />
+				<p class="hero-desc">
+					  Esta pagina esta destinada exclusivamente a la devolucion de recambios adquiridos en ETICALIDAD.
+					Por favor, complete el formulario con todos los datos necesarios.
+				</p>
+			</div>
+		</section>
+
+		<div class="divider"></div>
+
+		<section class="section">
+			<div class="container">
+				<div class="form-wrap">
+					<p class="form-label">Datos del formulario</p>
+
+					<form>
+						<div class="grid-2">
+							<input class="field" type="text" placeholder="Nombre y apellidos *" required />
+							<input class="field" type="text" placeholder="Empresa / CIF" />
+						</div>
+
+						<div class="grid-2">
+							<input class="field" type="email" placeholder="Email *" required />
+							<input class="field" type="tel" placeholder="Telefono *" required />
+						</div>
+
+						<div class="grid-2">
+							<input class="field" type="text" placeholder="Numero de pedido *" required />
+							<input class="field" type="date" aria-label="Fecha de compra" required />
+						</div>
+
+						<div class="grid-2">
+							<input class="field" type="text" placeholder="Nombre / codigo de la pieza *" required />
+							<input class="field" type="number" placeholder="Cantidad de unidades *" min="1" required />
+						</div>
+
+						<div class="select-wrap">
+							<select class="field" required>
+								<option value="">Motivo de la devolucion</option>
+								<option>Pieza incorrecta</option>
+								<option>No corresponde a la descripcion</option>
+								<option>Dano en el transporte</option>
+								<option>Pieza defectuosa</option>
+								<option>Otro motivo</option>
+							</select>
+						</div>
+
+						<textarea class="field" placeholder="Descripcion detallada del motivo *" rows="6" required></textarea>
+
+						<label class="upload-zone">
+							<input type="file" accept=".jpg,.jpeg,.png,.pdf" multiple />
+							<div class="upload-icon">📎</div>
+							<div class="upload-text">Adjuntar imagenes o documentos (max. 5 archivos · JPG, PNG, PDF)</div>
+						</label>
+
+						<div class="checks">
+							<label class="check">
+								<input type="checkbox" required />
+								<span>He leido y acepto el aviso legal y la politica de privacidad *</span>
+							</label>
+							<label class="check">
+								<input type="checkbox" />
+								<span>Acepto recibir comunicaciones comerciales relacionadas con mi solicitud</span>
+							</label>
+						</div>
+
+						<button class="submit-btn" type="submit">Enviar solicitud de devolucion</button>
+					</form>
+				</div>
+			</div>
+		</section>
+
+		<div class="divider"></div>
+
+		<section class="info">
+			<div class="container">
+				<div class="info-grid">
+					<article class="info-item">
+						<div class="info-icon">📦</div>
+						<p class="info-title">Plazo de resolucion</p>
+						<p class="info-value">2 dias habiles</p>
+					</article>
+					<article class="info-item">
+						<div class="info-icon">📋</div>
+						<p class="info-title">Politica de devolucion</p>
+						<p class="info-value">14 dias</p>
+					</article>
+					<article class="info-item">
+						<div class="info-icon">📞</div>
+						<p class="info-title">Necesitas ayuda?</p>
+						<p class="info-value">+34 957 421 615</p>
+					</article>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer class="site-footer">
+		<div class="container">
+			<div class="footer-grid">
+				<div>
+					  <p class="footer-logo">ETICALIDAD</p>
+					<p class="footer-text">
+						ETICALIDAD ofrece atencion profesional para que cada solicitud de devolucion sea clara, rapida y trazable.
+					</p>
+				</div>
+
+				<div>
+					<p class="footer-heading">Empresa</p>
+					<nav class="footer-links">
+						<a href="#">Inicio</a>
+						<a href="#">Politica de devoluciones</a>
+						<a href="#">Aviso legal</a>
+						<a href="#">Privacidad</a>
+					</nav>
+				</div>
+
+				<div>
+					<p class="footer-heading">Horario de atencion</p>
+					<p class="footer-contact">Lunes a viernes: 08:30 - 18:30<br />Sabado: 09:00 - 13:00</p>
+				</div>
+
+				<div>
+					<p class="footer-heading">Contacto</p>
+					<p class="footer-contact">
+					Calle Ejemplo 123, Cordoba<br />+34 957 421 615<br />info@eticalidad.com
+					</p>
+				</div>
+			</div>
+
+			<div class="footer-bottom">© 2026 ETICALIDAD · Todos los derechos reservados</div>
+		</div>
+	</footer>
+</body>
+</html>
